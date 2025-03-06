@@ -10,5 +10,5 @@ RUN apt-get update && apt-get install -y \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-# Comando por defecto para iniciar el contenedor
-# CMD ["some_command"]
+# Ejecutar LibreOffice en modo headless para convertir archivos a PDF
+CMD ["libreoffice", "--headless", "--invisible", "--convert-to", "pdf", "--outdir", "/tmp", "/documents/*.docx"]
