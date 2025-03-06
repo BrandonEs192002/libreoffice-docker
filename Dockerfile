@@ -1,13 +1,14 @@
 # Usar una imagen base de Ubuntu
 FROM ubuntu:20.04
 
+# Establecer la zona horaria de manera no interactiva
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Instalar LibreOffice
 RUN apt-get update && apt-get install -y \
     libreoffice \
+    tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-# Exponer el puerto donde se hará la conversión
-EXPOSE 8080
-
-# Ejecutar LibreOffice en modo headless para convertir archivos a PDF
-CMD ["libreoffice", "--headless", "--invisible", "--convert-to", "pdf", "--outdir", "/tmp", "/documents/*.docx"]
+# Comando por defecto para iniciar el contenedor
+# CMD ["some_command"]
